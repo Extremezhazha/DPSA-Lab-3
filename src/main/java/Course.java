@@ -43,4 +43,6 @@ public class Course {
     public void removeStudent(Student student){
         studentHashMap.remove(student.getId());
     }
+
+    public boolean hasNoStudents(){ return studentHashMap.isEmpty(); }
 }

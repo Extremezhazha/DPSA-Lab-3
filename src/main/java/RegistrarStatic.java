@@ -3,19 +3,18 @@ import java.util.HashMap;
 /**
  * Created by zhazha on 10/20/17.
  */
-public final class Registrar {
+public final class RegistrarStatic {
     private HashMap<String, Course> coursePool;
 
-    private Registrar() {
+    private RegistrarStatic() {
         this.coursePool = new HashMap<>();
     }
 
-    private static Registrar instance = null;
+    private static final RegistrarStatic instance = new RegistrarStatic();
 
-    public static synchronized Registrar getInstance(){
-        return instance == null ? instance = new Registrar() : instance;
+    public static RegistrarStatic getInstance(){
+        return instance;
     }
-
 
     public void register(Student student, String courseId){
         Course course = coursePool.get(courseId);

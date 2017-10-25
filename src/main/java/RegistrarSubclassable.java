@@ -3,19 +3,20 @@ import java.util.HashMap;
 /**
  * Created by zhazha on 10/20/17.
  */
-public class RegistrarAlt {
-    private HashMap<String, Course> coursePool;
+public class RegistrarSubclassable {
+    protected HashMap<String, Course> coursePool;
 
-    private RegistrarAlt() {
+    public RegistrarSubclassable() {
         this.coursePool = new HashMap<>();
     }
 
-    private static final RegistrarAlt instance = new RegistrarAlt();
+    private static RegistrarSubclassable instance = null;
 
-    public RegistrarAlt getInstance(){
-        return instance;
+    public static synchronized RegistrarSubclassable getInstance(){
+        return (RegistrarSubclassable) SingletonRegistry.REGISTRY.getInstance(
+                RegistrarSubclassable.class.getSimpleName()
+        );
     }
-
 
     public void register(Student student, String courseId){
         Course course = coursePool.get(courseId);

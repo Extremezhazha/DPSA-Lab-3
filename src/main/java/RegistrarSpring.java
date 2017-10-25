@@ -3,19 +3,12 @@ import java.util.HashMap;
 /**
  * Created by zhazha on 10/20/17.
  */
-public final class Registrar {
+public final class RegistrarSpring {
     private HashMap<String, Course> coursePool;
 
-    private Registrar() {
+    public RegistrarSpring() {
         this.coursePool = new HashMap<>();
     }
-
-    private static Registrar instance = null;
-
-    public static synchronized Registrar getInstance(){
-        return instance == null ? instance = new Registrar() : instance;
-    }
-
 
     public void register(Student student, String courseId){
         Course course = coursePool.get(courseId);
